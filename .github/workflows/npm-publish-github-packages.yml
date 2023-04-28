@@ -12,7 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Running Build of src folder
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -29,7 +28,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Publishing contents of dist folder to Github package.
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
