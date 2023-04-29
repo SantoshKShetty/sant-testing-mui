@@ -15,6 +15,7 @@ jobs:
       - run: npm run build
       - run: cp package.json dist/package.json
       - run: cd dist
+      - run: ls -a
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
