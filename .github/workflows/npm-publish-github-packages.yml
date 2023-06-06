@@ -1,9 +1,11 @@
-name: Node.js Package
+name: Build and Publish sant-testing-mui
 
-on: [push]
-
+on:
+  push:
+    branches:
+      - master
 jobs:
-  build-and-publish-gpr:
+  build-n-publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -11,15 +13,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      
-      - name: Setup Node and Execute tasks
+
+      - name: Setup Node and execute Build & Publish tasks.
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: latest
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: npm run build
-      - run: cp package.json dist/package.json
       - run: npm publish
         working-directory: dist
         env:
